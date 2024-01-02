@@ -3,7 +3,7 @@
 export default function Home() {
   return (
     <main>
-      <h2>Dashbeard</h2>
+      <h2>Dashboard</h2>
     </main>
   )
 }
