@@ -1,7 +1,11 @@
 import React from "react";
 
 async function getShows() {
-  const res = await fetch("http://localhost:4000/shows");
+  const res = await fetch("http://localhost:4000/shows", {
+    next: {
+        revalidate: 0, // use 0 to opt out of using cache
+    },
+  });
 
   return res.json();
 }
