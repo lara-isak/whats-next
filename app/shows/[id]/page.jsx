@@ -1,5 +1,19 @@
 import React from 'react'
 
+export async function generateStaticParams () {
+    const res = await fetch("http://localhost:4000/shows");
+  
+    const shows = await res.json();
+  
+    return shows.map((show) => ({
+        params: {
+            id: show.id.toString(),
+        },
+        }));
+        
+
+  }
+
 async function getShow(id) {
     const res = await fetch("http://localhost:4000/shows/" + id, {
       next: {
