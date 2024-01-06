@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 async function getShows() {
@@ -18,11 +19,13 @@ export default async function ShowsList() {
     <>
       {shows.map((show) => (
         <div key={show.id} className="card my-5">
-          <h3>{show.title}</h3>
-          <p>{show.body.slice(0, 200)}...</p>
-          <div className={`pill ${show.priority}`}>
-            {show.priority} priority
-          </div>
+          <Link href={`/shows/${show.id}`}>
+            <h3>{show.title}</h3>
+            <p>{show.body.slice(0, 200)}...</p>
+            <div className={`pill ${show.priority}`}>
+              {show.priority} priority
+            </div>
+          </Link>
         </div>
       ))}
       {shows.length === 0 && <p className="text-center">No shows to show</p>}
