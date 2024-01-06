@@ -1,4 +1,8 @@
+import { PageNotFoundError } from 'next/dist/shared/lib/utils';
+import { notFound } from 'next/navigation';
 import React from 'react'
+
+export const dynamicParams = true;
 
 export async function generateStaticParams () {
     const res = await fetch("http://localhost:4000/shows");
@@ -10,7 +14,7 @@ export async function generateStaticParams () {
             id: show.id.toString(),
         },
         }));
-        
+
 
   }
 
@@ -20,6 +24,10 @@ async function getShow(id) {
           revalidate: 60,
       },
     });
+
+    if(!res.ok) {
+        notFound();
+    }
   
     return res.json();
   }
