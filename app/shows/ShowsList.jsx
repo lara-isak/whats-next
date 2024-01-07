@@ -2,6 +2,8 @@ import Link from "next/link";
 import React from "react";
 
 async function getShows() {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
   const res = await fetch("http://localhost:4000/shows", {
     next: {
         revalidate: 0, // use 0 to opt out of using cache
