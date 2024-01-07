@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ShowsList from './ShowsList'
 
 export default function Shows() {
@@ -10,7 +10,9 @@ export default function Shows() {
         </div>
       </nav>
 
-      <ShowsList />
+      <Suspense>
+        <ShowsList />
+      </Suspense>
     </main>
   )
 }
