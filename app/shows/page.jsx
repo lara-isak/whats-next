@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react'
 import ShowsList from './ShowsList'
+import Loading from '../loading'
 
 export default function Shows() {
   return (
@@ -10,7 +11,7 @@ export default function Shows() {
         </div>
       </nav>
 
-      <Suspense>
+      <Suspense fallback={<Loading />}> 
         <ShowsList />
       </Suspense>
     </main>
