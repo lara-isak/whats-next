@@ -19,6 +19,8 @@ export async function generateStaticParams () {
   }
 
 async function getShow(id) {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
     const res = await fetch("http://localhost:4000/shows/" + id, {
       next: {
           revalidate: 60,
