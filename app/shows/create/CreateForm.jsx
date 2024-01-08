@@ -11,9 +11,27 @@ export default function CreateForm() {
   const [priority, setPriority] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // prevent page reload (default form behavior)
+    setIsLoading(true);
+
+    const show = { title, body, priority, user_email: "luckasti.larry@gmail.com" };
+
+    const res = await fetch("http://localhost:4000/shows", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(show),
+    });
+
+    if (res.status === 201) {
+      alert("Show added!");
+      router.push("/shows");
+    }
+  };
+
   return (
   
-    <form className="w-1/2">
+    <form onSubmit={handleSubmit} className="w-1/2">
       <label>
         <span>Title:</span>
         <input
