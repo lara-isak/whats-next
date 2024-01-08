@@ -8,7 +8,7 @@ export default function CreateForm() {
 
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [priority, setPriority] = useState("");
+  const [priority, setPriority] = useState("low");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -24,7 +24,7 @@ export default function CreateForm() {
     });
 
     if (res.status === 201) {
-      alert("Show added!");
+      router.refresh();
       router.push("/shows");
     }
   };
