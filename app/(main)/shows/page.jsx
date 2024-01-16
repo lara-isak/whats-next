@@ -2,6 +2,10 @@ import React, { Suspense } from 'react'
 import ShowsList from './ShowsList'
 import Loading from '../loading'
 
+export const metadata = {
+  title: 'What\'s Next | Shows',
+}
+
 export default function Shows() {
   return (
     <main>

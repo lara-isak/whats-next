@@ -4,6 +4,18 @@ import React from 'react'
 
 export const dynamicParams = true;
 
+export async function generateMetadata ( { params } ) {
+
+    const id = params.id;
+
+    const res = await fetch(`http://localhost:4000/shows/${id}`);
+    const show = await res.json();
+    
+    return {
+        title: `What's Next | ${show.title}`,
+    };
+}
+
 export async function generateStaticParams () {
     const res = await fetch("http://localhost:4000/shows");
   
