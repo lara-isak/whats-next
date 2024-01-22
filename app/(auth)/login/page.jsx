@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import AuthForm from "../AuthForm";
 
 export default function Login() {
   return (
     <main>
-        <h2 className="text-center">Log in</h2>
+      <h2 className="text-center">Log in</h2>
+
+      <AuthForm />
     </main>
-  )
+  );
 }
