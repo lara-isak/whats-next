@@ -1,12 +1,18 @@
 "use client";
 import React from "react";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import AuthForm from "../AuthForm";
 
 export default function Signup() {
   const handleSubmit = async (e, email, password) => {
     e.preventDefault();
 
-    console.log("Signup handleSubmit", email, password);
+    const supabase = createClientComponentClient();
+    await supabase.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo: `${location.origin}/api/auth/callback` },
+    });
   };
   return (
     <main>
